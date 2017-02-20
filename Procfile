@@ -1,0 +1,1 @@
+web: gunicorn --chdir src/  cookbook.wsgi --preload

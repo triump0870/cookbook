@@ -1,10 +1,8 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
+from django.utils.text import slugify
 from django.utils.timezone import now
 from mongoengine import *
-from django.utils.text import slugify
-from django_unique_slugify import unique_slugify
 
 DIFFICULTY_EASY = 1
 DIFFICULTY_MEDIUM = 2
