@@ -6,9 +6,7 @@ recipes is a _short description_. It is built with [Python][0] using the [Django
 
 This project has the following basic apps:
 
-* App1 (short desc)
-* App2 (short desc)
-* App3 (short desc)
+* Recipe APIs - http://localhost:8000/apis/recipes/
 
 ## Installation
 
@@ -31,6 +29,23 @@ Run migrations:
 ### Detailed instructions
 
 Take a look at the docs for more information.
+
+**Request Body**
+
+        {
+            "title": "",
+            "ingredient": [],
+            "preparation": "",
+            "time_for_preparation": null,
+            "number_of_portions": null,
+            "difficulty": null,
+            "categories": [],
+            "comment": []
+        }
+
+
+**Response Body**
+
 
 [0]: https://www.python.org/
 [1]: https://www.djangoproject.com/
