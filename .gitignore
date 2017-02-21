@@ -54,14 +54,14 @@ docs/_build/
 *.c
 *.db
 production.py
-db.sqlite3
+../db.sqlite3
 .idea/
 local.env
-static
+src/static
 media
 *.sql
 *.pem
 *.rdb
 htmlcov
 *.pyc
-*local.env
+src/cookbook/settings/local.env
