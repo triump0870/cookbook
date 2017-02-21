@@ -63,3 +63,5 @@ media
 *.pem
 *.rdb
 htmlcov
+*.pyc
+*local.env
