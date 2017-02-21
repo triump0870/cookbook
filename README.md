@@ -30,6 +30,16 @@ Run migrations:
 
 Take a look at the docs for more information.
 
+**APIs**
+
+GET _/apis/recipes/_
+
+
+Will list all the recipes in the database.
+
+
+POST _/apis/recipes/_
+
 **Request Body**
 
         {
@@ -44,7 +54,9 @@ Take a look at the docs for more information.
         }
 
 
-**Response Body**
+GET _/apis/recipes/{slug}_
+
+Will get the particular item.
 
 
 [0]: https://www.python.org/
