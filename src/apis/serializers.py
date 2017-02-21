@@ -1,5 +1,21 @@
 from recipes.models import Recipe, Category, Comment, Ingredient
 from rest_framework_mongoengine.serializers import DocumentSerializer, EmbeddedDocumentSerializer
+import json
+from django.forms.models import model_to_dict
+from bson.objectid import ObjectId
+from mongoengine import connect
+from os import environ as env
+
+_MONGODB_USER = env.get("MONGODB_USER")
+_MONGODB_PASSWD = env.get("MONGODB_PASSWD")
+_MONGODB_HOST = env.get("MONGODB_HOST")
+_MONGODB_NAME = env.get("MONGODB_NAME")
+_MONGODB_PORT = env.get("MONGODB_PORT")
+_MONGODB_DATABASE_HOST = \
+    'mongodb://%s:%s@%s:%s/%s' \
+    % (_MONGODB_USER, _MONGODB_PASSWD, _MONGODB_HOST, _MONGODB_PORT, _MONGODB_NAME)
+
+db = connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST)
 
 
 class CommentSerializer(EmbeddedDocumentSerializer):
@@ -52,10 +68,8 @@ class RecipeSerializer(DocumentSerializer):
 
     def update(self, instance, validated_data):
         comments = validated_data.pop("comments")
-        updated_instance = super(RecipeSerializer, self).update(instance, validated_data)
-
         for comment in comments:
-            updated_instance.comments.append(Comment(**comment))
+            instance.comments.append(Comment(**comment))
 
-        updated_instance.save()
-        return updated_instance
+        instance.save()
+        return instance
