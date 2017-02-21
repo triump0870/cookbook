@@ -102,14 +102,6 @@ WSGI_APPLICATION = 'cookbook.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-_MONGODB_USER = env("MONGODB_USER")
-_MONGODB_PASSWD = env("MONGODB_PASSWD")
-_MONGODB_HOST = env("MONGODB_HOST")
-_MONGODB_NAME = env("MONGODB_NAME")
-_MONGODB_PORT = env("MONGODB_PORT")
-_MONGODB_DATABASE_HOST = \
-    'mongodb://%s:%s@%s:%s/%s' \
-    % (_MONGODB_USER, _MONGODB_PASSWD, _MONGODB_HOST, _MONGODB_PORT, _MONGODB_NAME)
 
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in
@@ -121,7 +113,8 @@ DATABASES = {
 
 # SESSION_ENGINE = 'mongoengine.django.sessions'
 # SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
-
+_MONGODB_DATABASE_HOST = env("MONGODB_DATABASE_HOST")
+_MONGODB_NAME = env("MONGODB_NAME")
 mongoengine.connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST)
 
 AUTHENTICATION_BACKENDS = (
